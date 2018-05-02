@@ -23,7 +23,7 @@ runid = ''.join([random.choice('abcdefghijklmnopqrstuvwxyz') for r in xrange(5)]
 OUTFILE = '/'.join([config["destdir"],'-'.join([config['app'],config['platform'],config['version'],runid])+'.csv'])
 (app, company, device, platform, version, researcher) = (config['app'], config['company'] or '', config['device'], config['platform'], config['version'], config['researcher'])
 
-print "logging ", app, platform, version, " to ", OUTFILE
+print("logging ", app, platform, version, " to ", OUTFILE)
 
 def openfile():
     newFile = not os.path.isfile(OUTFILE) 
@@ -33,7 +33,7 @@ def openfile():
         writer.writerow(['app', 'company', 'version', 'device', 'platform', 'researcher', 'time', 'runid', 'host', 'url', 'method', 'headers', 'body'])
     return f,writer
 
-def request(context, flow):
+def request(flow):
     # pretty_host takes the "Host" header of the request into account,
     # which is useful in transparent mode where we usually only have the IP
     # otherwise.
