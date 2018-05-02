@@ -6,18 +6,28 @@ In this pipeline we will donwload and install apps from the app store, set up mi
 
 ## capture logs (dynamic approach)
 
-0. check out the repo
-1. create a virtualenv, enter the virtualenv; pip install mitmproxy
-2. create your own `mitm-config.json` based on mitm-config.sample.json to customise your environment
-3. run the script like `mitmdump -s mitm-save.py -p 8081`
+Initial setup:
 
-While you were interacting with an app on your device you should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
+-1. check out the repo
+0. create a virtualenv, enter the virtualenv; pip install mitmproxy
+
+First steup the device in accordance with mitm:
+
+1. Either connect through http-proxy or setup forwarding to use mitm --transparent
+2. Install mitm custom certificates on the device by going to mitm.it on browser
+
+Then setup mitm to work on the pc:
+
+1. create your own `mitm-config.json` based on mitm-config.sample.json to customise your environment
+2. run the script like `mitmdump -s mitm-save.py -p 8081`
+
+Then interact with an app on your device you should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
 
 ## process the logs
 
 1. create a copy of `config.sample.json` called `config.json`
 2. you need bower, make sure you have it (or `npm install -g bower`)
-3. at the top level, run bower install
+3. at the top level, run `bower install`
 4. go to the mitm directory
 5. run `npm install`
 6. make a 'mitm_out' directory (or whatever destination you specified in `config.json`)
