@@ -6,6 +6,7 @@ In this pipeline we will donwload and install apps from the app store, set up mi
 
 ## capture logs (dynamic approach)
 
+
 Procedure for capturing data on a device:
 
 0. Check out the repo
