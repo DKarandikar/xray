@@ -21,6 +21,15 @@ Procedure for capturing data on a device:
 
 You should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
 
+Alternatively using the transparent mtmproxy:
+
+4. Create and edit your own `mitm-config.json`
+5. Run `transparent.sh`
+6. Launch target app on decive 
+7. Do stuff, terminate script, terminate app
+
+Results should be the same but no need to setup HTTP proxy on the device, only install the CA
+
 ## process the logs
 
 1. create a copy of `config.sample.json` called `config.json`
