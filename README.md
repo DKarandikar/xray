@@ -6,22 +6,19 @@ In this pipeline we will donwload and install apps from the app store, set up mi
 
 ## capture logs (dynamic approach)
 
-Initial setup:
+Procedure for capturing data on a device:
 
--1. check out the repo
-0. create a virtualenv, enter the virtualenv; pip install mitmproxy
+0. Check out the repo
+1. Create a virtualenv, enter the virtualenv; pip install mitmproxy
+2. Install mitmproxy ca as a root ca on device
+3. Terminate all running apps on device
+4. Set http proxy to <this mitm host>:8080
+5. Create your own `mitm-config.json` and edit for app of choice with your details
+6. Run `mitmdump -s mitm-save.py -p 8080`
+7. Launch target app on device
+8. Do stuff on device for awhile, then terminate proxy then terminate app
 
-First steup the device in accordance with mitm:
-
-1. Either connect through http-proxy or setup forwarding to use mitm --transparent
-2. Install mitm custom certificates on the device by going to mitm.it on browser
-
-Then setup mitm to work on the pc:
-
-1. create your own `mitm-config.json` based on mitm-config.sample.json to customise your environment
-2. run the script like `mitmdump -s mitm-save.py -p 8081`
-
-Then interact with an app on your device you should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
+You should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
 
 ## process the logs
 

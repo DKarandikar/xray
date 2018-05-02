@@ -8,7 +8,7 @@
 # 0. install mitmproxy ca as a root ca on device
 # 1. terminate all running apps on device
 # 2. set http proxy to <this mitm host>:8081 
-# 3. edit mitm-save-config.json for appropriate app types
+# 3. edit mitm-config.json for appropriate app types
 # 4. run mitmdump -s mitm-save.py -p 8081
 # 5. launch target app on device
 # 6. do stuff on device for awhile, then terminate proxy then terminate app
