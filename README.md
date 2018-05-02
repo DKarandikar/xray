@@ -8,8 +8,8 @@ In this pipeline we will donwload and install apps from the app store, set up mi
 
 Initial setup:
 
--1. check out the repo
-0. create a virtualenv, enter the virtualenv; pip install mitmproxy
+0. check out the repo
+1. create a virtualenv, enter the virtualenv; pip install mitmproxy
 
 First steup the device in accordance with mitm:
 
