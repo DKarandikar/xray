@@ -12,8 +12,8 @@ Procedure for capturing data on a device:
 0. Check out the repo
 1. Create a virtualenv, enter the virtualenv; pip install mitmproxy
 2. Install mitmproxy ca as a root ca on device
-3. Terminate all running apps on device
-4. Set http proxy to <this mitm host>:8080
+3. Terminate all running apps on device and connect to network that mitmproxy is running on
+4. Set http proxy to mitm-host:8080
 5. Create your own `mitm-config.json` and edit for app of choice with your details
 6. Run `mitmdump -s mitm-save.py -p 8080`
 7. Launch target app on device
@@ -21,7 +21,7 @@ Procedure for capturing data on a device:
 
 You should see traffic on your local console, and logs to be saved in the directory specified in your mitm-config.json file. 
 
-Alternatively using the transparent mtmproxy:
+Alternatively using the transparent mitmproxy:
 
 4. Run `transparent.sh` (requires `jq` and edits `mitm-config` via command line input)
 5. Launch target app on decive 
