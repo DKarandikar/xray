@@ -14,4 +14,12 @@ ip6tables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j REDIRECT --to-port 
 ip6tables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j REDIRECT --to-port 8080
 
 #Run it
+echo "Type the name of the app"
+read app
+echo "Type the company"
+read company
+
+jq '.app = $newVal' --arg newVal $app mitm-config.json > tmp.$$.json && mv tmp.$$.json mitm-config.json
+jq '.company = $newVal2' --arg newVal2 $company mitm-config.json > tmp.$$.json && mv tmp.$$.json mitm-config.json
+
 mitmdump -T --host -s mitm-save.py -p 8080

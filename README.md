@@ -23,10 +23,9 @@ You should see traffic on your local console, and logs to be saved in the direct
 
 Alternatively using the transparent mtmproxy:
 
-4. Create and edit your own `mitm-config.json`
-5. Run `transparent.sh`
-6. Launch target app on decive 
-7. Do stuff, terminate script, terminate app
+4. Run `transparent.sh` (requires `jq` and edits `mitm-config` via command line input)
+5. Launch target app on decive 
+6. Do stuff, terminate script, terminate app
 
 Results should be the same but no need to setup HTTP proxy on the device, only install the CA
 
