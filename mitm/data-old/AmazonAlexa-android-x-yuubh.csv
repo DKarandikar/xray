@@ -1,0 +1,2 @@
+app,company,version,device,platform,researcher,time,runid,host,url,method,headers,body
+AmazonAlexa,Amazon,x,nexus6P,android,dkarandikar,1525874273391,yuubh,connectivitycheck.gstatic.com,http%3A//216.58.201.3/generate_204,GET,%7B%22Host%22%3A%20%22connectivitycheck.gstatic.com%22%2C%20%22Connection%22%3A%20%22Keep-Alive%22%2C%20%22Accept-Encoding%22%3A%20%22gzip%22%2C%20%22User-Agent%22%3A%20%22Dalvik/2.1.0%20%28Linux%3B%20U%3B%20Android%206.0.1%3B%20Nexus%206P%20Build/MOB30Z%29%22%7D,
