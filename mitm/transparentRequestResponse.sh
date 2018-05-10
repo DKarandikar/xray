@@ -22,4 +22,4 @@ read company
 jq '.app = $newVal' --arg newVal $app mitm-config.json > tmp.$$.json && mv tmp.$$.json mitm-config.json
 jq '.company = $newVal2' --arg newVal2 $company mitm-config.json > tmp.$$.json && mv tmp.$$.json mitm-config.json
 
-mitmdump -T --host -s mitm-save2.py -p 8080
+mitmdump -T --host -s mitm-saveRR.py -p 8080
