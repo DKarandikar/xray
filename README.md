@@ -41,6 +41,14 @@ Results should be the same but no need to setup HTTP proxy on the device, only i
 8. stand at the base directory, run `http-server`
 9. point a browser to to localhost:8080/prototypes/p1.html
 
+## tcpDump IP capture
+
+1. Edit `pcap_filtering/TcpCapture.sh` for correct interface (wlan0 by default) and run
+2. Interact with device on specified network
+3. Run `pcap_filtering/ExtractIPs.py [file]`
+
+Produces a .txt file with all IPs in the directory `pcap_filtering/ips`
+
 ## Automated MITM traffic logging
 
 Another way is to use monkey to simulate user events. Logs traffic data using mitmproxy.
