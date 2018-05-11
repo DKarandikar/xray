@@ -1,0 +1,9 @@
+{
+  "destdir": "./data",
+  "app": "Hue",
+  "company": "Test",
+  "version": "x",
+  "platform": "android",
+  "researcher": "dkarandikar",
+  "device": "nexus6P"
+}

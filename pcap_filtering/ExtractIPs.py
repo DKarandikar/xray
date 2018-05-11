@@ -6,8 +6,8 @@ import os
 ip = input("Filter by host IP? (n or IP)")
 
 if ip != "n":
-	os.system("tcpdump -r pcaps/" + sys.argv[1] + " -w pcaps/" + sys.argv[1] + "Host host " + ip)
-	filename = sys.argv[1] + "Host"
+	os.system("tcpdump -r pcaps/" + sys.argv[1] + " -w pcaps/" + sys.argv[1] + "Host" + ip.split(".")[3] + " host " + ip)
+	filename = sys.argv[1] + "Host" + ip.split(".")[3]
 else:
 	filename = sys.argv[1]
 
