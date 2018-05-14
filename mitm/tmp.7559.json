@@ -1,9 +1,0 @@
-{
-  "destdir": "./data",
-  "app": "AmazonAlexa",
-  "company": "Amazon",
-  "version": "x",
-  "platform": "android",
-  "researcher": "dkarandikar",
-  "device": "nexus6P"
-}

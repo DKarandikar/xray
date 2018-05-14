@@ -23,6 +23,6 @@ jq '.app = $newVal' --arg newVal $app mitm-config.json > tmp.$$.json && mv tmp.$
 jq '.company = $newVal2' --arg newVal2 $company mitm-config.json > tmp.$$.json && mv tmp.$$.json mitm-config.json
 
 # When ignoring domains in transparent mode, have to use IP not hostname
-# Ignoring amazon.com below to get Alexa app to work 
+# Ignoring amazon.com, api.amazon.com and amazon.co.uk below to get Alexa app to work 
 
-mitmdump -T -v --ignore 52\.85\.\d+\.\d+:443 --ignore  52\.86\.\d+\.\d+:443 --host -s mitm-save.py -p 8080
+mitmdump -T -v -I 54\.230\.\d+\.\d+:443 -I 52\.85\.\d+\.\d+:443 -I 52\.86\.\d+\.\d+:443 -I 104\.67\.\d+\.\d+:443 -I 52\.94\.\d+\.\d+:443 -I 52\.85\.\d+\.\d+:443 --host -s mitm-save.py -p 8080
