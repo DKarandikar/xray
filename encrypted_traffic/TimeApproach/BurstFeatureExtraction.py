@@ -20,7 +20,11 @@ if newFile:
     output = open("features.csv",'a')
     writer = csv.writer(output)
     
-    writer.writerow(['filename','burstNo','lengthTo','lengthFrom','maxLenTo','minLenTo','meanLenTo', 'medianLenTo','varTo','maxLenFrom','minLenFrom','meanLenFrom', 'medianLenFrom', 'varFrom'])
+    writer.writerow(['filename','burstNo',
+                     'lengthTo','lengthFrom',
+                     'maxLenTo','minLenTo','meanLenTo', 'medianLenTo','varTo',
+                     'maxLenFrom','minLenFrom','meanLenFrom', 'medianLenFrom', 'varFrom',
+                     'meanLenToNo54', 'meanLenFromNo54', 'burstlength'])
 else:
     with open("features.csv", 'r') as csvFile:
         mycsv = csv.reader(csvFile)
@@ -64,9 +68,19 @@ for file in f:
 
     pkts = pyshark.FileCapture("bursts/"+file)
 
+    
+    #initialTime = float(pkts[0].sniff_timestamp)
+    #finalTime = float(pkts[-1].sniff_timestamp)
+
+    init = True
+
     for p in pkts:
         if 'IP' in p:
             try:
+                if init:
+                    initialTime = float(p.sniff_timestamp)
+                    init = False
+                finalTime = float(p.sniff_timestamp)
                 if p['ip'].src == "192.168.4.2":
                     lengthsTo.append(int(p.length))
                 else:
@@ -91,6 +105,14 @@ for file in f:
     row.append(statistics.mean(lengthsFrom))
     row.append(statistics.median(lengthsFrom))
     row.append(statistics.variance(lengthsFrom))
+
+    lengthsToNo54 = list(filter(lambda a: a != 54, lengthsTo))
+    lengthsFromNo54 = list(filter(lambda a: a != 54, lengthsFrom))
+
+    row.append(statistics.mean(lengthsToNo54))
+    row.append(statistics.mean(lengthsFromNo54))
+    
+    row.append(finalTime-initialTime)
 
     # Write row
 
