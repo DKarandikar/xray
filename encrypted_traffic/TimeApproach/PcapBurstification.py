@@ -1,7 +1,7 @@
 from scapy.all import *
 
 try:
-        a = rdpcap("/home/pi/xray/encrypted_traffic/CategoryApproach/pcaps/" + sys.argv[1])
+        a = rdpcap("/home/pi/xray/encrypted_traffic/TimeApproach/pcaps/" + sys.argv[1])
 except:
         Print("Please give a filename as argument")
 
@@ -18,9 +18,9 @@ for pkt in a:
                 nextPcap.append(pkt)
                 currentTime = pkt.time
         else:
-                wrpcap("/home/pi/xray/encrypted_traffic/CategoryApproach/bursts/" + sys.argv[1] + "burst" + str(burstNumber) + ".pcap", nextPcap)
+                wrpcap("/home/pi/xray/encrypted_traffic/TimeApproach/bursts/" + sys.argv[1] + "burst" + str(burstNumber) + ".pcap", nextPcap)
                 burstNumber += 1
                 currentTime = pkt.time
                 nextPcap = [pkt]
 
-wrpcap("/home/pi/xray/encrypted_traffic/CategoryApproach/bursts/" + sys.argv[1] + "burst" + str(burstNumber) + ".pcap", nextPcap)
+wrpcap("/home/pi/xray/encrypted_traffic/TimeApproach/bursts/" + sys.argv[1] + "burst" + str(burstNumber) + ".pcap", nextPcap)
