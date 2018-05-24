@@ -14,3 +14,7 @@ And the echo was 192.168.4.2
 3.1. If this is run and the IP list changes, need to delete features.csv before next step
 4. Run `BurstFeatureExtraction.py` to extract features for bursts
 5. (OPTIONAL) Run `RemoveNoiseBursts.py` to get rid of all smaller bursts (background noise <30kB)
+
+## Live capture
+
+To use live capture wireshark (Tshark) has to be configured to not need root to run 

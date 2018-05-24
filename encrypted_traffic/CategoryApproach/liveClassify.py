@@ -13,7 +13,9 @@ BURST_TIME_INTERVAL = 1.0
 FLOW_SIZE_CUTOFF = 10   # Minimum number of packets to be counted as a valid flow
 
 
-capture = pyshark.LiveCapture(interface='wlan0')
+capture = pyshark.LiveCapture(interface='wlan0', only_summaries=True, bpf_filter = "ip host " + DEVICE_IP)
 
-for packet in capture.sniff_continuously(packet_count=5):
-    print 'Just arrived:', packet
+print("Starting capture")
+
+for packet in capture.sniff_continuously():
+    print(packet.time)
