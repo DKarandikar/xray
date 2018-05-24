@@ -21,3 +21,4 @@ static/apps
 *~
 **cache.json
 **/.ipynb_checkpoints/*
+bower_components
