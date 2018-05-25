@@ -1,4 +1,4 @@
-import os, csv
+import os, csv, _thread
 import numpy as np
 import pandas as pd
 import pyshark
@@ -22,6 +22,11 @@ Check for bursts that are big enough (60 packets)
 Start a new thread and get the stats on them and test it with the neural network 
 """
 
+def predictBurst(burst):
+    # Get all flows out of the burst
+    print(burst)
+    
+
 nextBurst = []
 first = True
 
@@ -32,9 +37,12 @@ for packet in capture.sniff_continuously():
     else:
         if (float(packet.time) - currentTime) < BURST_TIME_INTERVAL:
             nextBurst.append(packet)
+            print("Appending")
             currentTime = float(packet.time)
         else:
             if len(nextBurst) > BURST_PACKET_NO_CUTOFF:
-                print("Valid Burst")
+                _thread.start_new_thread( predictBurst, (nextBurst, ))
+            else:
+                print("Burst Too Short")
             currentTime = float(packet.time)
             nextBurst = [packet]
