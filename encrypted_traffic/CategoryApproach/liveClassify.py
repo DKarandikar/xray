@@ -27,14 +27,14 @@ first = True
 
 for packet in capture.sniff_continuously():
     if first:
-        currentTime = float(packet.sniff_timestamp)
+        currentTime = float(packet.time)
         first = False
     else:
-        if (float(packet.sniff_timestamp) - currentTime) < BURST_TIME_INTERVAL:
+        if (float(packet.time) - currentTime) < BURST_TIME_INTERVAL:
             nextBurst.append(packet)
-            currentTime = float(packet.sniff_timestamp)
+            currentTime = float(packet.time)
         else:
             if len(nextBurst) > BURST_PACKET_NO_CUTOFF:
                 print("Valid Burst")
-            currentTime = float(packet.sniff_timestamp)
+            currentTime = float(packet.time)
             nextBurst = [packet]
