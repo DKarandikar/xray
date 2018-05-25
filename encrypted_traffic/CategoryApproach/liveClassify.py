@@ -17,5 +17,24 @@ capture = pyshark.LiveCapture(interface='wlan0', only_summaries=True, bpf_filter
 
 print("Starting capture")
 
+"""
+Check for bursts that are big enough (60 packets)
+Start a new thread and get the stats on them and test it with the neural network 
+"""
+
+nextBurst = []
+first = True
+
 for packet in capture.sniff_continuously():
-    print(packet.time)
+    if first:
+        currentTime = float(packet.sniff_timestamp)
+        first = False
+    else:
+        if (float(packet.sniff_timestamp) - currentTime) < BURST_TIME_INTERVAL:
+            nextBurst.append(packet)
+            currentTime = float(packet.sniff_timestamp)
+        else:
+            if len(nextBurst) > BURST_PACKET_NO_CUTOFF:
+                print("Valid Burst")
+            currentTime = float(packet.sniff_timestamp)
+            nextBurst = [packet]
