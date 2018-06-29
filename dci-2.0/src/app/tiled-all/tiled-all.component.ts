@@ -55,6 +55,7 @@ export class TiledAllComponent extends TargetWatcher implements OnInit {
       console.log("SETTING QUERY PARAMS MODE", params.mode);
       this.mode = params.mode; 
     });
+    console.log("Here");
   }
 
   ngOnInit() {}
